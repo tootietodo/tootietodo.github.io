@@ -1,6 +1,6 @@
 var myApp = angular.module('DemoApp', ['firebase']);
 
-myApp.constant("FIREBASE_URL", "https://flickering-inferno-2551.firebaseio.com/" )
+myApp.constant("FIREBASE_URL", "https://tootietodo.firebaseio.com/" )
 
 
 function DemoCtrl($scope, $firebase, FIREBASE_URL) {
