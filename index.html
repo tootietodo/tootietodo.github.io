@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>TootieTodo</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.angularjs.org/1.2.6/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+    <script src="js/app.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -16,12 +21,75 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+    
+<body ng-controller="DemoCtrl" class="container"  ng-app="DemoApp">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+  
+  <h1 id="siteTitle">TootieTodo</h1>
+  <h4 class="secondaryHeading">Add an item to the list below.</h4>
+
+  <br />
+   <!--ADD ITEM FORM-->
+   <form name="myForm">
+
+       <div>
+
+          <div class="input-group">
+           <input type="text"
+                  name="todoNameField"
+                  ng-model="todoName"
+                  placeholder="Add new task (min 2 chars)"
+                  required ng-minlength="2"
+                  class="form-control"
+                  ng-keyup="($event.keyCode == 13 && todoName.length > 1) ? addItem() : return"
+                  />
+           <span class="input-group-btn">       
+            <button ng-click="addItem()"
+                           ng-disabled="myForm.todoNameField.$invalid"
+                           class="btn btn-primary" type="button"
+                           >Add</button>
+           </span>
+          </div><!-- /input-group -->
+       </div>
+
+   </form>
+
+  <hr>
+
+
+  <!--TODO LIST-->
+  <div ng-repeat="item in todos" class=" list-group-item row">
+
+      <div  class="col-md-6">
+          <!--COMPLETED ICON-->
+           <span class="glyphicon glyphicon-ok"
+                 ng-show="item.completed"> </span>
+
+
+          <!--todo label-->
+          <span class="listItem">{{item.name}} </span>
+
+          <!-- <small  class="text-warning"> [ {{item.id}} ]</small> -->
+      </div>
+
+
+      <div  class="col-md-6">
+          <!--Delete Todo button-->
+        <div class="listButtons">
+          <a class="btn btn-danger pull-right" ng-click="removeItem($index, item, $event)">
+              <i class="icon-remove-sign"></i>Delete
+          </a>
+
+          <a class="btn btn-success pull-right" ng-click="changeStatus(item)" style="margin-right: 5px;">
+              <i class="icon-remove-sign"></i>Got It!
+          </a>
+        </div>
+      </div>
+
+
+  </div>
+
+</body>
+
+
 </html>

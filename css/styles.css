@@ -1,0 +1,16 @@
+.listItem {
+  font-size: 2em;
+	line-height: 1.1em;
+}
+.listButtons a {
+	margin-top: 5px;
+}
+#siteTitle,
+.secondaryHeading {
+	text-align: center;
+}
+.glyphicon-ok {
+	color: #5cb85c;
+	padding-right: 10px;
+	font-size: 1.5em;
+}
