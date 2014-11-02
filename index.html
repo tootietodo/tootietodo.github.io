@@ -38,10 +38,10 @@
            <input type="text"
                   name="todoNameField"
                   ng-model="todoName"
-                  placeholder="Add new task (min 2 chars)"
-                  required ng-minlength="2"
+                  placeholder="Add new task (min 3 characters)"
+                  required ng-minlength="3"
                   class="form-control"
-                  ng-keyup="($event.keyCode == 13 && todoName.length > 1) ? addItem() : return"
+                  ng-keyup="($event.keyCode == 13 && todoName.length > 2) ? addItem() : return"
                   />
            <span class="input-group-btn">       
             <button ng-click="addItem()"
