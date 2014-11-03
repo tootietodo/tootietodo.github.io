@@ -25,40 +25,42 @@
 <body ng-controller="DemoCtrl" class="container"  ng-app="DemoApp">
 
   
-  <h1 id="siteTitle">TootieTodo</h1>
-  <h4 class="secondaryHeading">Add an item to the list below.</h4>
+  <h1 id="siteTitle"><span class="glyphicon glyphicon-ok"></span>Tootie<span>Todo</span></h1>
+  <h4 class="secondaryHeading lead">Add an item to the list below.</h4>
 
   <br />
    <!--ADD ITEM FORM-->
-   <form name="myForm">
+    <div class="well">
+      <form name="myForm">
 
-       <div>
+         <div>
 
-          <div class="input-group">
-           <input type="text"
-                  name="todoNameField"
-                  ng-model="todoName"
-                  placeholder="Add new task (min 3 characters)"
-                  required ng-minlength="3"
-                  class="form-control"
-                  ng-keyup="($event.keyCode == 13 && todoName.length > 2) ? addItem() : return"
-                  />
-           <span class="input-group-btn">       
-            <button ng-click="addItem()"
-                           ng-disabled="myForm.todoNameField.$invalid"
-                           class="btn btn-primary" type="button"
-                           >Add</button>
-           </span>
-          </div><!-- /input-group -->
-       </div>
+            <div class="input-group">
+             <input type="text"
+                    name="todoNameField"
+                    ng-model="todoName"
+                    placeholder="Add new task (min 3 characters)"
+                    required ng-minlength="3"
+                    class="form-control"
+                    ng-keyup="($event.keyCode == 13 && todoName.length > 2) ? addItem() : return"
+                    />
+             <span class="input-group-btn">       
+              <button ng-click="addItem()"
+                             ng-disabled="myForm.todoNameField.$invalid"
+                             class="btn btn-primary" type="button"
+                             >Add</button>
+             </span>
+            </div><!-- /.input-group -->
+         </div>
 
-   </form>
+      </form>
+    </div><!-- /.well -->
 
   <hr>
 
 
   <!--TODO LIST-->
-  <div ng-repeat="item in todos" class=" list-group-item row">
+  <div ng-repeat="item in todos" class="list-group-item clearfix">
 
       <div  class="col-md-6">
           <!--COMPLETED ICON-->
@@ -67,7 +69,7 @@
 
 
           <!--todo label-->
-          <span class="listItem">{{item.name}} </span>
+          <span class="listItem" ng-class="{'strike': item.completed}">{{item.name}} </span>
 
           <!-- <small  class="text-warning"> [ {{item.id}} ]</small> -->
       </div>
@@ -76,13 +78,13 @@
       <div  class="col-md-6">
           <!--Delete Todo button-->
         <div class="listButtons">
-          <a class="btn btn-danger" ng-click="removeItem($index, item, $event)">
+          <button class="btn btn-danger" ng-disabled="!item.completed" ng-click="removeItem($index, item, $event)">
               <i class="icon-remove-sign"></i>Delete
-          </a>
+          </button>
 
-          <a class="btn btn-success" ng-click="changeStatus(item)">
+          <button class="btn btn-success" ng-click="changeStatus(item)">
               <i class="icon-remove-sign"></i>Got It!
-          </a>
+          </button>
         </div>
       </div>
 

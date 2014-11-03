@@ -3,11 +3,11 @@
 	line-height: 1.1em;
 }
 @media (min-width: 992px) {
-	.listButtons a {
+	.listButtons button {
 		float: right !important;
 	}
 }
-.listButtons a {
+.listButtons button {
 	margin-right: 5px;
 	float: left;
 }
@@ -19,4 +19,18 @@
 	color: #5cb85c;
 	padding-right: 10px;
 	font-size: 1.5em;
+}
+#siteTitle .glyphicon-ok {
+	color: #333;
+	padding: 0;
+}
+h1#siteTitle {
+	font-weight: 300;
+}
+h1#siteTitle span {
+	font-weight: 900;
+}
+.listItem.strike {
+	text-decoration: line-through;
+	color: #ddd;
 }
